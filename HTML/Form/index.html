@@ -37,14 +37,39 @@
         <div id="recommend">
           <section>
             <h3> Recommanderez-vous ce produit à d'autres clients ?</h3>
+            <p> <span> Oui <input type = "radio" name = "choice"/> Non <input type = "radio" name = "choice"/> </span></p>
           </section>
         </div>
+
         <div id="rating">
           <h3>Donnez une note entre 1 et 5 :</h3>
+          <select id="rating-menu" required>
+            <option value="" selected disabled hidden >Choisir</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
         </div>
       </div>
+
       <div id="comment">
         <h3>Ajoutez un commentaire!</h3>
+        <section id = "title-comment">
+          Titre:
+          <input type = "text" required placeholder="Que faut-il savoir sur le produit ?">
+        </section>
+
+        <section id = "message-comment">
+          Message:
+          <textarea id= "message" name= "message" required minlength="10"></textarea>
+        </section>
+
+        <section id = "validation">
+          <input type="submit" value="Envoyer">
+        </section>
+
       </div>
     </form>
   </main>
