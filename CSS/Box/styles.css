@@ -11,15 +11,23 @@
 
 body {
     font-size: large;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 #main-container {
+    display: flex;
+    flex-direction: column;
     gap: var(--gap-size);
 }
 
 #top-bar {
-    border: 1px solid;
+    border: 1px solid var(--border-color);
     padding: 5px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 #top-bar-title {
@@ -28,17 +36,24 @@ body {
 }
 
 #main-area {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(500px, 1fr));
+    /* Exercice #2 : Permet de créer autant de colonnes que possible avec une taille minimale de 450xp pour les enfants */
+    /* grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); */
     gap: var(--gap-size);
 }
 
 .employee-card {
-    border: 2px solid;
+    border: 2px solid var(--border-color);
     border-radius: 10px;
+    background-color: var(--base-color);
+    position: relative;
+    display: flex;
 }
 
 .employee-card:hover {
     /* à remplacer */
-    background-color: green;
+    background-color: var(--highlight-color);
 }
 
 .employee-card:hover button {
@@ -46,6 +61,9 @@ body {
 }
 
 .info-button {
+    position: absolute;
+    top: 0;
+    right: 0;
     visibility: hidden;
     width: 40px;
     height: 40px;
@@ -54,6 +72,11 @@ body {
 }
 
 .employee-info {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 5px;
 }
 
@@ -66,7 +89,13 @@ body {
     border-radius: 5px;
     padding: 5px;
     text-align: center;
+    width: 100%;
+    background-color: var(--employee-color);
     box-sizing: border-box;
+}
+
+.intern {
+    background-color: var(--intern-color);
 }
 
 .bold {
