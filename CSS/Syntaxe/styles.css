@@ -4,7 +4,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 30px;
 }
 
 form {
@@ -14,64 +13,59 @@ form {
     padding: 10px;
     border: 2px solid black;
 }
-
-input {
-    width: 100%;
-    margin: 5px 0px;
-    box-sizing: border-box;
-}
-
 .rounded-border {
     border-radius: 10px;
 }
 
-div>input {
+input, select {
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+form div input {
     background-color: #ffffe0;
 }
 
-#login-submit{
+#login-submit {
     background-color: darkgreen;
+    font-size: larger;
     color: white;
-    font-size: large;
 }
 
 #login-submit:hover{
-    font-size: larger;
     background-color: green;
+    font-size: x-large;
 }
 
-#logoff-reminder {
+#logoff-reminder{
     text-align: center;
 }
 
-/* Sélecteurs multiples pour l'élément <input> */
-input[value = "Connexion"]{
-
+li:after {
+    font-family: monospace;
+    font-weight: bold;
 }
 
-div form input {
-
+li:nth-child(1)::after {
+    content: 'input[type=\'submit\']';
 }
 
-div ~ input{
-
+li:nth-child(2)::after {
+    content: 'form>input';
 }
 
-p:not(div>input) {
+li:nth-child(3)::after {
+    content: 'div+input ou div~input';
 }
 
+li:nth-child(4)::after {
+    content: 'input:not(div>input) ou input:not(:last-child)';
+}
 
 li:hover::marker{
     content: "★ ";
-    color: green;
-    font-size: 20px;}
-
-/* Pour tester */
-.a_remplacer {
-    background-color: blue;
+    color: darkgreen;
+    font-size: 20 px;
 }
-
-
-
-
-/* Exercice supplémentaire */
