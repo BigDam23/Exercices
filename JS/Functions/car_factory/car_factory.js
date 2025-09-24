@@ -21,7 +21,19 @@
  *  info() retourne l'information de la voiture dans le format suivant : "make model : year"
  */
 function CarFactory(make) {
-    return { };
+    let counter = 0;
+    return {
+        carsBuilt: ()=>counter,
+        carBuilder: (model) => (year) => {
+            counter++;
+            return{
+                make,
+                model,
+                year,
+                info() {return `${make} ${model} : ${year}`}
+            }
+        }
+    }    
 }
 
 /// Exemples d'utilisation
@@ -43,9 +55,9 @@ console.log(fordFactory.carsBuilt()); //2
  * @param {Car} car La voiture initiale
  * @param {number} newYear l'année du nouveau modèle à échanger
  * @returns un objet car avec la nouvelle année
- */
+ */ 
 function CarUpgrader(car, newYear) {
-    car.year = newYear;
+    Object.getPrototypeOf(car).year = newYear;
     return car;
 }
 

@@ -6,7 +6,10 @@ const users = [
     { name: "Claire", team: 3 }
 ];
 
-const teams = [];
+sortByTeamNumber = (a, b) => a.team - b.team;
+
+const teams = users.sort(sortByTeamNumber);
+
 console.log(teams);
 /* Valeur attendue :
 [ { team: 1, members: [ 'Michel', 'Julie' ] },
