@@ -53,8 +53,32 @@ const schools = [{
  */
 function createElement(type, props, children) {
     const element = document.createElement(type);
-    // TODO : Implémenter la fonction
-    element.append(children ? children[0] : []);
+
+    if (props) {
+        if (props.classes != null) {
+            for (let cl of props.classes) {
+                element.classList.add(cl);
+            }
+        }
+        if (props.id != null) {
+            element.setAttribute("id", props.id);
+        }
+        if (props.rest != null) {
+            for (let key in props.rest) {
+                element.setAttribute(key, props.rest[key]);
+            }
+        }
+    }
+
+    if(children != null){
+        for (let child of children) {
+            if (typeof child === "string") {
+                element.append(document.createTextNode(child));
+            } else if (child instanceof HTMLElement) {
+                element.append(child);
+            }
+        }
+    }
 
     return element;
 }
@@ -66,8 +90,12 @@ function createElement(type, props, children) {
  */
 function buildSchoolCard(school) {
     // TODO
-    const card = createElement('a',
-        { id: school.id, classes: ['school-card'], rest: { href: school.link, target: '_blank' } });
+    const card = createElement('a', { id: school.id, classes: ['school-card'], rest: { href: school.link, target: '_blank' }}, [
+        createElement('img', { classes: ['logo'], rest : {src: `./assets/${school.logo}`}}),
+        createElement('div', { classes: ['info-container']}, [
+            createElement('p', {classes: ['info-name']}, [school.name])
+        ])
+    ]);
     return card;
 }
 
